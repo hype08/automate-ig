@@ -7,17 +7,14 @@ module.exports = {
             script: 'cron/timelineCron.js',
             instances: 1,
             autorestart: false,
-            watch: false
+            watch: false,
         },
         {
             name: 'storyCron',
             script: 'cron/storyCron.js',
             instances: 1,
             autorestart: false,
-            watch: false
-        }
-    ]
-
-}
-
-
+            watch: false,
+        },
+    ],
+};
