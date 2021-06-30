@@ -19,9 +19,9 @@ async function likeId(
         moduleInfo: {
             module_name: 'profile',
             user_id: ig.loggedInUser.pk,
-            username: ig.loggedInUser.username
+            username: ig.loggedInUser.username,
         },
-        d: _.sample([0, 1]) // d - means double-tap.
+        d: _.sample([0, 1]), // d - means double-tap.
     });
 
     let timestamp =
@@ -44,7 +44,7 @@ async function likeId(
                 media_id: media_id,
                 link: link,
                 created_at: timestamp,
-                extra_info: extraInfo
+                extra_info: extraInfo,
             })
             .write();
     }

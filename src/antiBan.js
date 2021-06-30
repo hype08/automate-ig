@@ -1,7 +1,7 @@
 /**
  * If on, regenerates cookie.
  */
- async function antiBan(ig) {
+async function antiBan(ig) {
     if (ig.antiBanMode == true) {
         console.info('Using Antiban');
         ig = await regenSession(ig, (log = false));

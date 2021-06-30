@@ -5,10 +5,10 @@ let _ = require('lodash');
 //let Api = null;
 let MQTT = require('instagram_mqtt');
 let {
-    GraphQLSubscriptions
+    GraphQLSubscriptions,
 } = require('instagram_mqtt/dist/realtime/subscriptions/graphql.subscription');
 let {
-    SkywalkerSubscriptions
+    SkywalkerSubscriptions,
 } = require('instagram_mqtt/dist/realtime/subscriptions/skywalker.subscription');
 let ig = null;
 let colors = require('colors');
@@ -40,7 +40,7 @@ function saveCookies(inputLogin, cookies, state) {
     fs.writeFileSync(cookiepath, cookies);
     return {
         cookies,
-        state
+        state,
     };
 }
 async function loadCookies(inputLogin, silentMode = false) {
@@ -81,7 +81,7 @@ async function login(args = {}) {
         silentMode = false,
         antiBanMode = false,
         showRealtimeNotifications = false,
-        onlineMode = true
+        onlineMode = true,
     } = args;
 
     MQTT.IgApiClientRealtime = MQTT.withRealtime(new Api.IgApiClient());
@@ -135,7 +135,7 @@ async function login(args = {}) {
             uuid: ig.state.uuid,
             phoneId: ig.state.phoneId,
             adid: ig.state.adid,
-            build: ig.state.build
+            build: ig.state.build,
         };
         saveCookies(inputLogin, cookies, state);
         await ig.state.deserializeCookieJar(JSON.stringify(cookies));
@@ -160,7 +160,7 @@ async function login(args = {}) {
     result.showRealtimeNotifications = showRealtimeNotifications;
     result.realtime = ig.realtime;
 
-    const subToLiveComments = broadcastId =>
+    const subToLiveComments = (broadcastId) =>
         result.realtime.graphQlSubscribe(
             GraphQLSubscriptions.getLiveRealtimeCommentsSubscription(
                 broadcastId
@@ -194,13 +194,13 @@ async function login(args = {}) {
                 ),
                 GraphQLSubscriptions.getAsyncAdSubscription(
                     ig.state.cookieUserId
-                )
+                ),
             ],
             skywalkerSubs: [
                 SkywalkerSubscriptions.directSub(ig.state.cookieUserId),
-                SkywalkerSubscriptions.liveSub(ig.state.cookieUserId)
+                SkywalkerSubscriptions.liveSub(ig.state.cookieUserId),
             ],
-            irisData: await ig.feed.directInbox().request()
+            irisData: await ig.feed.directInbox().request(),
         });
     } else {
         console.info('Online Mode disabled'.green);
@@ -278,7 +278,7 @@ async function tryToLogin(
             comments: [],
             mediaUploaded: [],
             follows: [],
-            latestFollowers: []
+            latestFollowers: [],
         }).write();
         ig.shortid = shortid;
         ig.db = db;
@@ -374,5 +374,5 @@ function clone(obj) {
 }
 
 function logEvent(name) {
-    return data => console.info(name, data);
+    return (data) => console.info(name, data);
 }

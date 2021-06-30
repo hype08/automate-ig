@@ -3,7 +3,7 @@ async function sleep(seconds, logTimer = true) {
     if (logTimer) {
         console.info(('Sleeping ' + seconds + ' s').yellow);
     }
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 module.exports = sleep;

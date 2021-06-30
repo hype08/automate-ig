@@ -6,7 +6,7 @@ async function viewStoriesOfId(ig, id, username) {
             id = aux;
         }
         const reelsFeed = await ig.feed.reelsMedia({
-            userIds: id
+            userIds: id,
         });
         await sleep(2, false);
         const storyItems = await reelsFeed.items();

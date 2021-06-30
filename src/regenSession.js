@@ -15,7 +15,7 @@ async function regenSession(ig, log = true) {
         inputProxy: ig.loggedInUser.inputProxy,
         verificationMode: ig.loggedInUser.verificationMode,
         silentMode: true,
-        antiBanMode: ig.antiBanMode
+        antiBanMode: ig.antiBanMode,
     });
 }
 module.exports = regenSession;

@@ -11,6 +11,6 @@ function instabot() {
     global.viewStoryOfId = require('./viewStoryOfId');
     global.viewStoryOfUser = require('./viewStoryOfUser');
     global.sleep = require('../utils/sleep');
-};
+}
 
 module.exports = instabot();
